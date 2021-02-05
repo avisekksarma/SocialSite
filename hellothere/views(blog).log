@@ -49,3 +49,20 @@
 2021-02-04 10:45:10,741:INFO:19:blog.views:_auth_user_hash => 453de2ea4072a50a58d3073f15c4944a87111afaef35ac12cd2afc9dcd383d41
 2021-02-04 10:45:10,741:INFO:19:blog.views:username => abhishek
 2021-02-04 10:45:10,743:INFO:24:blog.views:yesssssssss-2
+2021-02-05 04:05:42,968:INFO:17:blog.views:yesssssssss-1
+2021-02-05 04:05:42,972:INFO:19:blog.views:_auth_user_id => 1
+2021-02-05 04:05:42,972:INFO:19:blog.views:_auth_user_backend => django.contrib.auth.backends.ModelBackend
+2021-02-05 04:05:42,972:INFO:19:blog.views:_auth_user_hash => 453de2ea4072a50a58d3073f15c4944a87111afaef35ac12cd2afc9dcd383d41
+2021-02-05 04:05:42,972:INFO:19:blog.views:username => abhishek
+2021-02-05 04:05:42,974:INFO:24:blog.views:yesssssssss-2
+2021-02-05 04:09:09,137:INFO:17:blog.views:yesssssssss-1
+2021-02-05 04:09:09,139:INFO:19:blog.views:username => olive
+2021-02-05 04:09:09,139:INFO:19:blog.views:email => yorow29835@laklica.com
+2021-02-05 04:09:09,139:INFO:19:blog.views:password => testing123
+2021-02-05 04:09:09,139:INFO:19:blog.views:random_url => 9WEoyuUVztLbb20v
+2021-02-05 08:26:31,151:INFO:17:blog.views:yesssssssss-1
+2021-02-05 08:26:31,154:INFO:19:blog.views:_auth_user_id => 1
+2021-02-05 08:26:31,154:INFO:19:blog.views:_auth_user_backend => django.contrib.auth.backends.ModelBackend
+2021-02-05 08:26:31,154:INFO:19:blog.views:_auth_user_hash => 4d6dc7715b3b762444ae7124043acd1d92dfa94b9ca71204f9f2f838a325188c
+2021-02-05 08:26:31,154:INFO:19:blog.views:username => abhishek
+2021-02-05 08:26:31,156:INFO:24:blog.views:yesssssssss-2

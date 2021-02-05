@@ -113,3 +113,5 @@ def logout_user(request):
     logout(request)
     messages.success(request,'You are successfully logged out.')
     return redirect('login',permanent=True)
+
+

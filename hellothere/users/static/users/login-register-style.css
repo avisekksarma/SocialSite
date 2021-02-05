@@ -62,10 +62,15 @@ input[type="submit"]{
 }
 
 #go-to-login-register{
-    margin-top:1.2rem;
+    margin-top:0.8rem;
     font-size:0.55rem;
 }
 
 #go-to-login-register a{
     text-decoration:none;
+}
+
+#forgot-password{
+    font-size:0.6rem;
+    margin-top:0.8rem;
 }

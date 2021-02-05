@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from django.contrib.auth import urls
+from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/',include('users.urls')),
     path('',include('blog.urls')),
+    path('accounts/',include(urls))
     # path('chat/',include('chat.urls'))
 ]
