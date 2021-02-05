@@ -1,0 +1,40 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block title %}
+- Login
+{% endblock %}
+{% block link %}
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lemonada&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" href =" {% static 'users/login-register-style.css' %}">
+{% endblock link %}
+{% block content %}
+<div class="flex-login-register">
+    <div class="login-register-form">
+        <h3>Login</h3>
+        <hr style="width:75%;">
+        <form action = "" method = "post">
+            {% csrf_token %}
+            <!-- <table>
+                {{form.as_table}}
+            </table> -->
+    
+            {{ form.non_field_errors }}
+            <div class="fieldWrapper">
+                {{ form.username.errors }}
+                <p class = "label_tag" ><strong>{{ form.username.label_tag }}</strong></p>
+                <span class ="input-field">{{ form.username }}</span>
+            </div>
+            <div class="fieldWrapper">
+                {{ form.password.errors }}
+                <p class = "label_tag" ><strong>{{ form.password.label_tag }}</strong></p>
+                <span class ="input-field">{{ form.password }}</span>
+                <input type = "submit" value="Login">
+            </div>
+            
+        </form>
+        <p id="go-to-login-register">Don't have an account? <a href="{% url 'register' %}">Register Here</a></p>
+    </div>
+</div>
+{% endblock %} 

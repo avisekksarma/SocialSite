@@ -1,0 +1,51 @@
+2021-02-04 10:03:30,963:INFO:17:blog.views:yesssssssss-1
+2021-02-04 10:03:30,965:INFO:19:blog.views:username => nick
+2021-02-04 10:03:30,965:INFO:24:blog.views:yesssssssss-2
+2021-02-04 10:03:50,723:INFO:17:blog.views:yesssssssss-1
+2021-02-04 10:03:50,726:INFO:19:blog.views:username => nick
+2021-02-04 10:03:50,726:INFO:24:blog.views:yesssssssss-2
+2021-02-04 10:04:44,851:INFO:17:blog.views:yesssssssss-1
+2021-02-04 10:04:44,854:INFO:19:blog.views:username => nick
+2021-02-04 10:04:44,854:INFO:24:blog.views:yesssssssss-2
+2021-02-04 10:04:52,021:INFO:17:blog.views:yesssssssss-1
+2021-02-04 10:04:52,023:INFO:19:blog.views:username => nick
+2021-02-04 10:04:52,023:INFO:24:blog.views:yesssssssss-2
+2021-02-04 10:07:38,839:INFO:17:blog.views:yesssssssss-1
+2021-02-04 10:07:49,517:INFO:17:blog.views:yesssssssss-1
+2021-02-04 10:07:49,521:INFO:19:blog.views:_auth_user_id => 1
+2021-02-04 10:07:49,521:INFO:19:blog.views:_auth_user_backend => django.contrib.auth.backends.ModelBackend
+2021-02-04 10:07:49,521:INFO:19:blog.views:_auth_user_hash => 453de2ea4072a50a58d3073f15c4944a87111afaef35ac12cd2afc9dcd383d41
+2021-02-04 10:07:49,521:INFO:19:blog.views:username => abhishek
+2021-02-04 10:07:49,523:INFO:24:blog.views:yesssssssss-2
+2021-02-04 10:17:23,617:INFO:17:blog.views:yesssssssss-1
+2021-02-04 10:17:23,620:INFO:19:blog.views:_auth_user_id => 1
+2021-02-04 10:17:23,620:INFO:19:blog.views:_auth_user_backend => django.contrib.auth.backends.ModelBackend
+2021-02-04 10:17:23,620:INFO:19:blog.views:_auth_user_hash => 453de2ea4072a50a58d3073f15c4944a87111afaef35ac12cd2afc9dcd383d41
+2021-02-04 10:17:23,620:INFO:19:blog.views:username => abhishek
+2021-02-04 10:17:23,621:INFO:24:blog.views:yesssssssss-2
+2021-02-04 10:22:29,195:INFO:17:blog.views:yesssssssss-1
+2021-02-04 10:22:29,196:INFO:19:blog.views:username => bob
+2021-02-04 10:22:42,033:INFO:17:blog.views:yesssssssss-1
+2021-02-04 10:22:42,036:INFO:19:blog.views:username => bob
+2021-02-04 10:22:42,036:INFO:19:blog.views:_auth_user_id => 7
+2021-02-04 10:22:42,036:INFO:19:blog.views:_auth_user_backend => django.contrib.auth.backends.ModelBackend
+2021-02-04 10:22:42,036:INFO:19:blog.views:_auth_user_hash => 38c4c5c329cf94cdaeafd41e3eddd3e530b9d3625c20dfdcda581bf99e832302
+2021-02-04 10:22:42,039:INFO:24:blog.views:yesssssssss-2
+2021-02-04 10:44:37,475:INFO:17:blog.views:yesssssssss-1
+2021-02-04 10:44:37,478:INFO:19:blog.views:username => abhishek
+2021-02-04 10:44:37,478:INFO:19:blog.views:_auth_user_id => 1
+2021-02-04 10:44:37,478:INFO:19:blog.views:_auth_user_backend => django.contrib.auth.backends.ModelBackend
+2021-02-04 10:44:37,478:INFO:19:blog.views:_auth_user_hash => 453de2ea4072a50a58d3073f15c4944a87111afaef35ac12cd2afc9dcd383d41
+2021-02-04 10:44:37,480:INFO:24:blog.views:yesssssssss-2
+2021-02-04 10:44:40,429:INFO:17:blog.views:yesssssssss-1
+2021-02-04 10:44:40,433:INFO:19:blog.views:username => abhishek
+2021-02-04 10:44:40,433:INFO:19:blog.views:_auth_user_id => 1
+2021-02-04 10:44:40,433:INFO:19:blog.views:_auth_user_backend => django.contrib.auth.backends.ModelBackend
+2021-02-04 10:44:40,433:INFO:19:blog.views:_auth_user_hash => 453de2ea4072a50a58d3073f15c4944a87111afaef35ac12cd2afc9dcd383d41
+2021-02-04 10:44:40,435:INFO:24:blog.views:yesssssssss-2
+2021-02-04 10:45:10,738:INFO:17:blog.views:yesssssssss-1
+2021-02-04 10:45:10,741:INFO:19:blog.views:_auth_user_id => 1
+2021-02-04 10:45:10,741:INFO:19:blog.views:_auth_user_backend => django.contrib.auth.backends.ModelBackend
+2021-02-04 10:45:10,741:INFO:19:blog.views:_auth_user_hash => 453de2ea4072a50a58d3073f15c4944a87111afaef35ac12cd2afc9dcd383d41
+2021-02-04 10:45:10,741:INFO:19:blog.views:username => abhishek
+2021-02-04 10:45:10,743:INFO:24:blog.views:yesssssssss-2

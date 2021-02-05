@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola{% block title %}{% endblock %} </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    {% block link %}
+    
+    {% endblock %}
+    <style>
+        .msgs{
+            border-radius: 10px;
+            padding: 0.4rem;
+        }
+        .messages{
+            padding:5px;
+        }
+        .success{
+            list-style-type:none;
+        }
+
+        .error-msgs{
+            background-color: lightcoral;
+        }
+
+        .success-msgs{
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    {% block navbar %}
+    <nav>
+        <ul>
+            {% if request.user.is_authenticated %}
+            <li>Posts</li>
+            <li><a href="">Chat</a></li>
+            <li>Profile</li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endblock navbar %}
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+        <div class="msgs success-msgs">
+        {{ message }}
+        </div>
+        {% else %}
+        <div class="msgs error-msgs">
+            {{ message }}
+            </div>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+    {% block content %} 
+        {% if request.user.is_anonymous %}
+            {% block login-register %}
+            {% endblock login-register %}
+        {% endif %}
+    {% endblock content %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    
+</body>
+</html>

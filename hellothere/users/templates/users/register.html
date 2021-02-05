@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}
+- Register
+{% endblock %}
+{% block link %}
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lemonada&display=swap" rel="stylesheet">
+<link rel="stylesheet" href =" {% static 'users/login-register-style.css' %}">
+{% endblock %}
+{% block content %}
+<div class="flex-login-register">
+<div class="login-register-form">
+    <h3>Register</h3>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type = "submit" value="Register">
+    </form>  
+    <p id="go-to-login-register">Already have an account? <a href="{% url 'login' %}">Login</a></p>  
+</div>
+</div>
+{% endblock %} 
