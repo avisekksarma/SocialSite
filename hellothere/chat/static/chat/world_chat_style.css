@@ -1,0 +1,39 @@
+*{
+    margin:10px !important;
+}
+
+div #message-list{
+    background-color:rgb(221, 227, 237);
+    height:70vh;
+    max-height:600px;
+    max-width:700px;
+    overflow:auto;
+    margin-bottom:1rem;
+}
+
+.box{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+
+}
+
+#message-list-wrapper{
+    flex:3 200px;
+
+}
+
+#online-list{
+    flex:1 100px;
+    background-color:rgb(186, 245, 202)
+}
+
+
+#input-message-box{
+    width:80%;
+    max-width: 600px;;
+}
+
+#online-list{
+    overflow:auto;
+}

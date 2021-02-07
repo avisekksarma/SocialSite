@@ -31,6 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # i put channels on top of installed_apps so that runserver command 
+    # is completely controlled by it not by sth like whitenoise
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -72,7 +75,15 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'hellothere.wsgi.application'
-
+ASGI_APPLICATION = 'hellothere.asgi.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -131,3 +142,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL') # this is the admin gmail to send the email to site users ( so andrewsans )
 EMAIL_HOST_PASSWORD = os.environ.get('PASS')
+
+
+LOGIN_URL = '/account/login/'

@@ -22,6 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/',include('users.urls')),
     path('',include('blog.urls')),
-    path('accounts/',include(urls))
-    # path('chat/',include('chat.urls'))
+    path('accounts/',include(urls)),
+    path('chat/',include('chat.urls'))
 ]

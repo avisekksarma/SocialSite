@@ -1,0 +1,42 @@
+{% extends 'blog/base.html' %}
+
+{% load static %}
+
+{% block title %}
+- WorldChat
+{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'chat/world_chat_style.css' %}">
+{% endblock %}
+
+
+{% block script %}
+<script src = "{% static 'chat/world_chat_script.js' %}" defer></script>
+{% endblock script %}
+
+{% block navbar %}
+{% endblock navbar %}
+
+{% block content %} 
+Your Username: <p id="username" >  {{username}}</p>
+<p class="flash-msg"></p>
+<div class="box">
+    <div id="message-list-wrapper">
+        <div id="message-list">
+
+        </div>
+        <input type="text" id="input-message-box" >
+        <button type="button" id ="submit" class="btn btn-primary">Send</button>
+    
+    </div>
+    
+    <div id="online-list">
+        <h3>Active Friends</h3>
+        <hr>
+        
+    </div>
+</div>
+ 
+        
+{% endblock content %}
