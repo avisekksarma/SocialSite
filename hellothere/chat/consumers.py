@@ -1,7 +1,7 @@
 import json
 from channels.generic.websocket import WebsocketConsumer
 from asgiref.sync import async_to_sync
-from .models import OnlineUsersInWorldChat
+from .models import OnlineUsersInWorldChat,AllWorldChatMessages
 from django.contrib.auth.models import User
 from django.core import serializers
 
@@ -65,6 +65,12 @@ class WorldChatConsumer(WebsocketConsumer):
         message = data_dict['message']
         sent_by = data_dict['sent_by']
 
+        world_chat_msg = AllWorldChatMessages(sent_by=User.objects.get(username=sent_by),message=message)
+        world_chat_msg.save()
+
+        msg_sent_time = world_chat_msg.msg_sent_time 
+
+
         # self.send(text_data= json.dumps({'message':message}))
 
         async_to_sync(self.channel_layer.group_send)(
@@ -72,17 +78,21 @@ class WorldChatConsumer(WebsocketConsumer):
             {
                 'type':'send_message',
                 'message':message,
-                'sent_by':sent_by
+                'sent_by':sent_by,
+                'msg_sent_time': world_chat_msg.serialize_datetime()
             }
         )
 
     def send_message(self,event):
         message=event['message']
         sent_by = event['sent_by']
+        msg_sent_time = event['msg_sent_time']
+
         # event = {'type':'send_message','message':message }
         self.send(text_data=json.dumps({
             'message': message,
-            'sent_by':sent_by
+            'sent_by':sent_by,
+            'msg_sent_time': msg_sent_time
         }))
 
     def send_online_list(self,event):

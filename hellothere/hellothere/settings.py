@@ -25,7 +25,8 @@ SECRET_KEY = '!27i-lqt($2heby!-c8o6jx6=a89irf0n62_-7x4k531)j4e^y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# TODO: i think i only change in here allowed_hosts and host in .js file
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -120,7 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kathmandu'
 
 USE_I18N = True
 

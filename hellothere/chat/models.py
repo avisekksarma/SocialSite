@@ -48,3 +48,18 @@ class OnlineUsersInWorldChat(models.Model):
                 )
             logger.info(f'value: {serialized_online_user_list}')
             return serialized_online_user_list
+
+
+class AllWorldChatMessages(models.Model):
+    sent_by = models.ForeignKey(User,on_delete=models.CASCADE)
+    message = models.TextField()
+    msg_sent_time = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'({self.sent_by.username})-{self.message}'
+
+    def serialize_datetime(self):
+        return {
+            'date':str(self.msg_sent_time.year)+'-'+str(self.msg_sent_time.month)+'-'+str(self.msg_sent_time.day),
+            'time':str(self.msg_sent_time.hour)+'-'+str(self.msg_sent_time.minute)+'-'+str(self.msg_sent_time.second)
+        }

@@ -37,3 +37,14 @@ div #message-list{
 #online-list{
     overflow:auto;
 }
+
+.msgs{
+    width:95%;
+    min-height:50px;
+    border:15px 30px;
+    /* display:flex;
+    flex-direction: row; */
+    /* justify-content:center; */
+    /* align-items: center; */
+    background-color:rgb(230, 159, 60);
+}
