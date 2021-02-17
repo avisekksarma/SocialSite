@@ -1,0 +1,49 @@
+{% extends 'blog/base.html' %}
+
+{% load static %}
+
+{% block title %}
+- PrivateChat
+{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'chat/private_chat_style.css' %}">
+{% endblock %}
+
+
+{% block script %}
+<script src = "{% static 'chat/private_chat_script.js' %}" defer></script>
+{% endblock script %}
+
+{% block navbar %}
+{% endblock navbar %}
+
+{% block content %} 
+<h4>Private chat between you ({{my_username}}) and {{friend_username}}</h4>
+<p id="small-id" style="display:none">{{small_id}}</p>
+<p id="big-id" style="display:none">{{big_id}}</p>
+Your Username: <p id="username" >{{my_username}}</p>
+<p class="flash-msg"></p>
+<div class="box">
+    <div id="message-list-wrapper">
+        <div id="message-list">
+            {% if all_previous_msgs %}
+            {% for prev_msg in all_previous_msgs %}
+            <p class="msgs"><strong>{{prev_msg.sent_by}}:</strong><span>{{prev_msg.message}}</span>({{prev_msg.msg_sent_time.date}} , {{prev_msg.msg_sent_time.time}})</p>
+            {% endfor %}
+            {% endif %}
+        </div>
+        <input type="text" id="input-message-box" >
+        <button type="button" id ="submit" class="btn btn-primary">Send</button>
+    
+    </div>
+    
+    <div id="online-list">
+        <h3>Active Friends</h3>
+        <hr>
+        
+    </div>
+</div>
+ 
+        
+{% endblock content %}

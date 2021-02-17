@@ -23,9 +23,16 @@ import chat.routing
 # and dispatches to the right one based on protocol name (or raises an error)
 application = ProtocolTypeRouter(
     {
-        # if http request sent by browser/user then the 
-        # request may be is forwarded to projects' urls.py then from there to respective
+        # TODO: this todo is just written to highlight these VVI comments below this line.
+        # first due to channels the runserver command is overtaken
+        # now it runs in danphe server which can handle both websocket and http requests
+        # now ASGI_APPLICATION variable is searched in settings.py which takes us  to this application variable
+        # So, this is the base point for requests in danphe server not like projects' urls.py in django's dev 
+        # server case.
+        # So,now if http request sent by browser/user then the 
+        # request may be is forwarded to base projects' urls.py then from there to respective
         # app's urls.py then to the view function which returns the httpresponse to the browser.
+        # else if the request is websocket then the request is sent to the chat.routing.websocket_urlpatterns
         'http':get_asgi_application(),
         'websocket':AuthMiddlewareStack(
             SessionMiddlewareStack(

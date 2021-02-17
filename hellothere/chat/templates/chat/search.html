@@ -1,0 +1,39 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}
+- Search
+{% endblock %}
+
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'chat/search.css' %}">
+{% endblock %}
+{% block script %}
+<script src="{% static 'chat/search_script.js' %}" defer></script>
+{% endblock %}
+
+{% block navbar %}
+{% endblock navbar %}
+
+{% block content %} 
+<p id="userinfo" style="display:none">{{request.user.username}}</p>
+<div class="all-content">
+  <div class="search-div mb-3">
+    <form action="" method="">
+        {% csrf_token %}
+        <div class="form-group">
+          <br>
+          <input type="text"  name ="search" class="form-control" id="search-box" placeholder="Search User">
+        </div>
+        <br>
+        <p class="button-wrapper"><button type="submit" class="btn btn-info" id="search-btn">Search</button></p>
+        
+      </form>
+ </div>
+<div id="all_searched_users">
+
+</div>
+</div>
+ 
+{% endblock content %}

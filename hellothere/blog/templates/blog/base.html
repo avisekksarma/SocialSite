@@ -37,6 +37,7 @@
         <ul>
             {% if request.user.is_authenticated %}
             <li>Posts</li>
+            <li><a href="{% url 'search_users' %}">Search Users</a></li>
             <li><a href="{% url 'chat_index' %}">Chat</a></li>
             <li>Profile</li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
@@ -62,10 +63,7 @@
 </ul>
 {% endif %}
     {% block content %} 
-        {% if request.user.is_anonymous %}
-            {% block login-register %}
-            {% endblock login-register %}
-        {% endif %}
+        
     {% endblock content %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     

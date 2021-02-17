@@ -63,3 +63,19 @@ class AllWorldChatMessages(models.Model):
             'date':str(self.msg_sent_time.year)+'-'+str(self.msg_sent_time.month)+'-'+str(self.msg_sent_time.day),
             'time':str(self.msg_sent_time.hour)+'-'+str(self.msg_sent_time.minute)+'-'+str(self.msg_sent_time.second)
         }
+
+
+class AllPrivateChatMessages(models.Model):
+    sent_by = models.ForeignKey(User,on_delete=models.CASCADE)
+    room_name = models.CharField(max_length=20)
+    message = models.TextField()
+    msg_sent_time = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'({self.sent_by.username})-{self.message} in room={self.room_name}'
+
+    def serialize_datetime(self):
+        return {
+            'date':str(self.msg_sent_time.year)+'-'+str(self.msg_sent_time.month)+'-'+str(self.msg_sent_time.day),
+            'time':str(self.msg_sent_time.hour)+'-'+str(self.msg_sent_time.minute)+'-'+str(self.msg_sent_time.second)
+        }
