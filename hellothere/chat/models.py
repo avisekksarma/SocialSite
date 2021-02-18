@@ -33,8 +33,11 @@ class OnlineUsersInWorldChat(models.Model):
     @classmethod
     def make_user_offline(cls,username):
         user = User.objects.get(username=username)
-        online_user = cls.objects.get(user=user)
-        online_user.delete()
+        try:
+            online_user = cls.objects.get(user=user)
+            online_user.delete()
+        except cls.DoesNotExist:
+            pass
 
     @staticmethod
     def serialize(**kwargs):

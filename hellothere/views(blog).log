@@ -597,3 +597,10 @@
 2021-02-18 17:32:29,607:INFO:19:blog.views:_auth_user_hash => d064f738ab7169dbc737d736d31c123f6a32e4dab3b41fa478dfcb76fc3917bf
 2021-02-18 17:32:29,607:INFO:19:blog.views:username => alice
 2021-02-18 17:32:29,610:INFO:24:blog.views:yesssssssss-2
+2021-02-18 17:45:12,468:INFO:17:blog.views:yesssssssss-1
+2021-02-18 17:45:19,740:INFO:17:blog.views:yesssssssss-1
+2021-02-18 17:45:19,743:INFO:19:blog.views:_auth_user_id => 2
+2021-02-18 17:45:19,743:INFO:19:blog.views:_auth_user_backend => django.contrib.auth.backends.ModelBackend
+2021-02-18 17:45:19,743:INFO:19:blog.views:_auth_user_hash => d064f738ab7169dbc737d736d31c123f6a32e4dab3b41fa478dfcb76fc3917bf
+2021-02-18 17:45:19,743:INFO:19:blog.views:username => alice
+2021-02-18 17:45:19,744:INFO:24:blog.views:yesssssssss-2
