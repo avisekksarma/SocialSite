@@ -21,9 +21,9 @@ class OnlineUsersInWorldChat(models.Model):
     @classmethod
     def make_user_online(cls,username):
         user = User.objects.get(username=username)
-        already_online_user = OnlineUsersInWorldChat.objects.filter(user=user)
+        already_online_user = cls.objects.filter(user=user)
         if not already_online_user:
-            OnlineUsersInWorldChat(user=user).save()
+            cls(user=user).save()
         else:
             # this may happen if user without disconnecting tries to connect 
             # to the worldchat maybe via new device/browser/incognito/new tab
@@ -33,7 +33,7 @@ class OnlineUsersInWorldChat(models.Model):
     @classmethod
     def make_user_offline(cls,username):
         user = User.objects.get(username=username)
-        online_user = OnlineUsersInWorldChat.objects.get(user=user)
+        online_user = cls.objects.get(user=user)
         online_user.delete()
 
     @staticmethod
@@ -79,3 +79,41 @@ class AllPrivateChatMessages(models.Model):
             'date':str(self.msg_sent_time.year)+'-'+str(self.msg_sent_time.month)+'-'+str(self.msg_sent_time.day),
             'time':str(self.msg_sent_time.hour)+'-'+str(self.msg_sent_time.minute)+'-'+str(self.msg_sent_time.second)
         }
+
+class IsFriendOnlineInPrivateChat(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'({self.user.username})'
+
+    @classmethod
+    def make_user_online(cls,username):
+        user = User.objects.get(username=username)
+        already_online_user = cls.objects.filter(user=user)
+        if not already_online_user:
+            cls(user=user).save()
+        else:
+            # this may happen if user without disconnecting tries to connect 
+            # to the worldchat maybe via new device/browser/incognito/new tab
+            pass
+            
+
+    @classmethod
+    def make_user_offline(cls,username):
+        user = User.objects.get(username=username)
+        online_user = cls.objects.get(user=user)
+        online_user.delete()
+
+    @staticmethod
+    def serialize(**kwargs):
+        if 'online_user_list' in kwargs:
+            serialized_online_user_list=[]
+            for online_user in kwargs['online_user_list']:
+                serialized_online_user_list.append(
+                    {
+                        'username':online_user.user.username
+                    }
+                )
+            logger.info(f'value: {serialized_online_user_list}')
+            return serialized_online_user_list
+

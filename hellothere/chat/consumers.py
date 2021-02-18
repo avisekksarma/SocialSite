@@ -1,7 +1,7 @@
 import json
 from channels.generic.websocket import WebsocketConsumer
 from asgiref.sync import async_to_sync
-from .models import OnlineUsersInWorldChat,AllWorldChatMessages,AllPrivateChatMessages
+from .models import OnlineUsersInWorldChat,AllWorldChatMessages,AllPrivateChatMessages,IsFriendOnlineInPrivateChat
 from django.contrib.auth.models import User
 from django.core import serializers
 
@@ -18,9 +18,10 @@ logger.addHandler(filehandler)
 
 class WorldChatConsumer(WebsocketConsumer):
 
+    online_list = OnlineUsersInWorldChat
     def connect(self):
-        logger.info('successfully connected')
-        logger.warning(f'{self.scope}')
+        # logger.info('successfully connected')
+        # logger.warning(f'{self.scope}')
         # logger.warning(f'{request.session.get(email)}')
         # logger.warning(f'{request.session}')
         # accepts an incoming websocket connection
@@ -28,7 +29,7 @@ class WorldChatConsumer(WebsocketConsumer):
         self.group_name = 'worldchat'
 
         
-        OnlineUsersInWorldChat.make_user_online(self.scope['session']['username'])
+        self.online_list.make_user_online(self.scope['session']['username'])
 
         # idk how we got self.channel_layer argument in the 
         # following line
@@ -50,7 +51,7 @@ class WorldChatConsumer(WebsocketConsumer):
 
     def disconnect(self,close_code):
 
-        OnlineUsersInWorldChat.make_user_offline(self.scope['session']['username'])
+        self.online_list.make_user_offline(self.scope['session']['username'])
         
         # this is done to update the online list when one user disconnects.
 
@@ -112,23 +113,27 @@ class WorldChatConsumer(WebsocketConsumer):
         }))
 
     def send_online_list(self,event):
-        self.send(text_data=json.dumps(return_all_online_users_dict(current_user=self)))
+        self.send(text_data=json.dumps(return_all_online_users_dict(current_user=self,cls=self.online_list)))
 
 # returns all the online users except the current user/ user himself/herself.
-def return_all_online_users_dict(current_user):
+def return_all_online_users_dict(current_user,cls):
 
     return {
-            'online_users': OnlineUsersInWorldChat.serialize(online_user_list=OnlineUsersInWorldChat.objects.exclude(user=User.objects.get(username=current_user.scope['session']['username'])))
+            'online_users': cls.serialize(online_user_list=cls.objects.exclude(user=User.objects.get(username=current_user.scope['session']['username'])))
         }
     
 
 
 class PrivateChatConsumer(WebsocketConsumer):
 
+    online_list = IsFriendOnlineInPrivateChat
+
     def connect(self):
         small_id = self.scope['url_route']['kwargs']['smallid']
         big_id = self.scope['url_route']['kwargs']['bigid']
         self.group_name = str(small_id)+'-'+str(big_id)
+
+        self.online_list.make_user_online(self.scope['session']['username'])
 
         async_to_sync(self.channel_layer.group_add)(
             self.group_name,
@@ -137,7 +142,23 @@ class PrivateChatConsumer(WebsocketConsumer):
 
         self.accept()
 
+        async_to_sync(self.channel_layer.group_send)(
+            self.group_name,
+            {
+                'type':'send_online_list',
+            }
+        )
+
     def disconnect(self,close_code):
+        self.online_list.make_user_offline(self.scope['session']['username'])
+
+        async_to_sync(self.channel_layer.group_send)(
+            self.group_name,
+            {
+                'type':'send_online_list',
+            }
+        )
+
         async_to_sync(self.channel_layer.group_discard)(
             self.group_name,
             self.channel_name
@@ -175,3 +196,7 @@ class PrivateChatConsumer(WebsocketConsumer):
             'sent_by':sent_by,
             'msg_sent_time': msg_sent_time
         }))
+    
+    def send_online_list(self,event):
+        self.send(text_data=json.dumps(return_all_online_users_dict(current_user=self,cls=self.online_list)))
+
