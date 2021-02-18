@@ -1,2 +1,2 @@
 # SocialSite
-SocialSite with chat part using django-channels
+SocialSite with right now only chat functionality,with chat part using django-channels
